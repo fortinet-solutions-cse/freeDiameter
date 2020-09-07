@@ -421,11 +421,7 @@ static void * p_psm_th( void * arg )
 	if (peer->p_flags.pf_responder) {
 		fd_psm_next_timeout(peer, 0, INCNX_TIMEOUT);
 	} else {
-#if 0 /* Open5GS : I set the dealy time to 1 second for a quick connection */
 		fd_psm_next_timeout(peer, created_started, 0);
-#else
-		fd_psm_next_timeout(peer, 0, 1);
-#endif
 	}
 	
 psm_loop:
