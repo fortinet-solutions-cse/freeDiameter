@@ -505,7 +505,7 @@ static int fd_setsockopt_prebind(int sk)
 #if 0 /* Open5GS : workaround for SCTP event */
 			if (sz != sizeof(event))
 #else
-			if (sz != sctp_sockopt_event_subscribe_size)
+			if (sz != sizeof(event) && sz != sctp_sockopt_event_subscribe_size)
 #endif
 			{
 				TRACE_DEBUG(INFO, "Invalid size of socket option: %d / %d", sz, (socklen_t)sizeof(event));
