@@ -143,7 +143,8 @@ static int sctp_setsockopt_events_linux_workaround(
     } else if (compiletime_size < sctp_sockopt_event_subscribe_size) {
         /* we are using an older userspace with a more modern kernel
          * and hence need to pad the data */
-        uint8_t buf[sctp_sockopt_event_subscribe_size];
+        uint8_t buf[256];
+        ASSERT(sctp_sockopt_event_subscribe_size <= sizeof(buf));
 
         memcpy(buf, event, compiletime_size);
         memset(buf + sizeof(*event),
