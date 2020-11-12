@@ -43,13 +43,23 @@
 
 /* For development only : */
 %debug 
-%error-verbose
+/*
+ * Open5GS : modified by acetcom
+ *
+ * %error-verbose -> %define parse.error verbose
+ */
+%define parse.error verbose
 
 %parse-param {struct fd_config * conf}
 
 /* Keep track of location */
 %locations 
-%pure-parser
+/*
+ * Open5GS : modified by acetcom
+ *
+ * %pure-parser -> %define api.pure
+ */
+%define api.pure
 
 %{
 #include "fdcore-internal.h"
