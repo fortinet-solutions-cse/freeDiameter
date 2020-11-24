@@ -418,7 +418,10 @@ static int fd_setsockopt_prebind(int sk)
 	#endif /* SCTP_DISABLE_FRAGMENTS */
 	
 	/* SCTP_PEER_ADDR_PARAMS	control heartbeat per peer address. We set it as a default for all addresses in the association; not sure if it works ... */
-	#ifdef SCTP_PEER_ADDR_PARAMS
+
+    // sbryden: FPOC LXC Debian 10 doesn't support this
+    // and it's not needed, so skip it
+    #ifdef SKIP_THIS__SCTP_PEER_ADDR_PARAMS
 	{
 		struct sctp_paddrparams parms;
 		memset(&parms, 0, sizeof(parms));
